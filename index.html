@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leaf & Brew | Premium Tea Company</title>
+    <style>
+        /* Global Styles */
+        :root {
+            --primary: #3A5A40;
+            --secondary: #DAD7CD;
+            --accent: #A3B18A;
+            --text-dark: #344E41;
+            --text-light: #FFFFFF;
+            --bg: #F8F9FA;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Open Sans', sans-serif;
+            color: var(--text-dark);
+            background-color: var(--bg);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--primary);
+        }
+        
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        button, .button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: var(--border-radius);
+            cursor: pointer;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover, .button:hover {
+            background-color: var(--accent);
+            transform: translateY(-2px);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header & Navigation */
+        header {
+            background-color: var(--text-light);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: var(--accent);
+        }
+        
+        .nav-icons {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .cart-count {
+            background-color: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 12px;
+            margin-left: -8px;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 500px;
+            background-image: url('https://images.unsplash.com/photo-1560343090-f0409e92791a');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero-text {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 600px;
+        }
+        
+        .hero-text h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .hero-text p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+        }
+        
+        /* Categories Section */
+        .categories {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .categories h2 {
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        
+        .category-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s;
+        }
+        
+        .category-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .category-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .category-card h3 {
+            padding: 15px;
+        }
+        
+        .category-card button {
+            margin-bottom: 20px;
+            width: calc(100% - 40px);
+        }
+        
+        /* Bestsellers Section */
+        .bestsellers {
+            padding: 60px 0;
+            background-color: var(--secondary);
+        }
+        
+        .bestsellers h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        
+        .product-carousel {
+            display: flex;
+            gap: 20px;
+            overflow-x: auto;
+            padding-bottom: 20px;
+        }
+        
+        .product-card {
+            min-width: 250px;
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+        
+        .product-info {
+            padding: 15px;
+        }
+        
+        .product-info h3 {
+            margin-bottom: 10px;
+        }
+        
+        .price {
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        
+        .quick-add {
+            width: 100%;
+            padding: 8px;
+            font-size: 0.9rem;
+        }
+        
+        /* Testimonials Section */
+        .testimonials {
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .testimonials h2 {
+            margin-bottom: 40px;
+            font-size: 2.2rem;
+        }
+        
+        .testimonial-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        .testimonial-card p {
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        
+        .testimonial-author {
+            font-weight: bold;
+        }
+        
+        /* Newsletter Section */
+        .newsletter {
+            background-color: var(--primary);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .newsletter h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+        
+        .newsletter p {
+            margin-bottom: 30px;
+            font-size: 1.1rem;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px;
+            border: none;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+            font-size: 1rem;
+        }
+        
+        .newsletter-form button {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 0 30px;
+        }
+        
+        /* Instagram Section */
+        .instagram-feed {
+            padding: 60px 0;
+            text-align: center;
+        }
+        
+        .instagram-feed h2 {
+            margin-bottom: 30px;
+            font-size: 2.2rem;
+        }
+        
+        .instagram-posts {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+        
+        .instagram-posts img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: var(--border-radius);
+            transition: transform 0.3s;
+        }
+        
+        .instagram-posts img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.3rem;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Product Listing Page */
+        .product-listing {
+            display: flex;
+            padding: 40px 0;
+            gap: 30px;
+        }
+        
+        .filters-sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            height: fit-content;
+        }
+        
+        .filter-group {
+            margin-bottom: 30px;
+        }
+        
+        .filter-group h4 {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .filter-group ul {
+            list-style: none;
+        }
+        
+        .filter-group li {
+            margin-bottom: 8px;
+        }
+        
+        .product-grid {
+            flex: 1;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        /* Product Detail Page */
+        .product-detail {
+            display: flex;
+            gap: 40px;
+            padding: 60px 0;
+        }
+        
+        .product-gallery {
+            flex: 1;
+        }
+        
+        .main-image {
+            width: 100%;
+            height: 500px;
+            background-color: #eee;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .thumbnail-images {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+        }
+        
+        .thumbnail-images img {
+            width: 100%;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .product-info {
+            flex: 1;
+        }
+        
+        .product-info h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .rating {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1.4rem;
+            margin-left: 10px;
+        }
+        
+        .details-section {
+            margin: 30px 0;
+        }
+        
+        .details-section h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .add-to-cart {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+        
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+        }
+        
+        .quantity-selector button {
+            background-color: #f5f5f5;
+            color: var(--text-dark);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            border: none;
+        }
+        
+        .quantity-selector input {
+            width: 50px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid #ddd;
+            border-right: 1px solid #ddd;
+        }
+        
+        .add-to-cart-btn {
+            flex: 1;
+            height: 40px;
+        }
+        
+        .wishlist-btn {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+        }
+        
+        .related-products {
+            margin: 60px 0;
+        }
+        
+        .related-products h2 {
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+        }
+        
+        /* Cart Page */
+        .cart-page {
+            padding: 60px 0;
+        }
+        
+        .cart-page h1 {
+            margin-bottom: 40px;
+            font-size: 2.5rem;
+        }
+        
+        .cart-container {
+            display: flex;
+            gap: 40px;
+        }
+        
+        .cart-items {
+            flex: 2;
+        }
+        
+        .cart-item {
+            display: flex;
+            gap: 20px;
+            background-color: white;
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 20px;
+        }
+        
+        .cart-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        
+        .item-details {
+            flex: 1;
+        }
+        
+        .item-details h3 {
+            margin-bottom: 10px;
+        }
+        
+        .remove-item {
+            background: none;
+            border: none;
+            color: #999;
+            text-decoration: underline;
+            padding: 0;
+            font-size: 0.9rem;
+        }
+        
+        .cart-summary {
+            flex: 1;
+            background-color: white;
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            height: fit-content;
+        }
+        
+        .cart-summary h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .summary-row.total {
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-bottom: none;
+            margin-top: 20px;
+        }
+        
+        .promo-code {
+            display: flex;
+            margin: 20px 0;
+        }
+        
+        .promo-code input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius) 0 0 var(--border-radius);
+        }
+        
+        .promo-code button {
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            padding: 0 20px;
+        }
+        
+        .checkout-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 1024px) {
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .testimonial-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .instagram-posts {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .footer-content {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .product-detail {
+                flex-direction: column;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+            
+            .product-listing {
+                flex-direction: column;
+            }
+            
+            .filters-sidebar {
+                width: 100%;
+            }
+            
+            .cart-container {
+                flex-direction: column;
+            }
+            
+            .cart-item {
+                flex-direction: column;
+            }
+            
+            .cart-item img {
+                width: 100%;
+                height: 200px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .category-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: var(--border-radius);
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: var(--border-radius);
+                width: 100%;
+            }
+            
+            .add-to-cart {
+                flex-direction: column;
+            }
+            
+            .quantity-selector {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">
+                    <img src="https://via.placeholder.com/150x50?text=Leaf+%26+Brew" alt="Leaf & Brew Logo">
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#shop">Shop</a></li>
+                    <li><a href="#learn">Learn</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <div class="nav-icons">
+                    <a href="#account"><i class="user-icon">👤</i></a>
+                    <a href="#cart"><i class="cart-icon">🛒</i><span class="cart-count">0</span></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-text">
+                <h1>Summer Iced Tea Collection</h1>
+                <p>Refresh your days with our new seasonal blends</p>
+                <button class="cta-button">Shop Now</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
+        <div class="container">
+            <h2>Explore Our Tea Collections</h2>
+            <div class="category-grid">
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x200?text=Green+Tea" alt="Green Tea">
+                    <h3>Green Teas</h3>
+                    <button>View Collection</button>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x200?text=Black+Tea" alt="Black Tea">
+                    <h3>Black Teas</h3>
+                    <button>View Collection</button>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x200?text=Herbal+Tea" alt="Herbal Tea">
+                    <h3>Herbal Teas</h3>
+                    <button>View Collection</button>
+                </div>
+                <div class="category-card">
+                    <img src="https://via.placeholder.com/300x200?text=Fruit+Tea" alt="Fruit Infusions">
+                    <h3>Fruit Infusions</h3>
+                    <button>View Collection</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bestsellers Section -->
+    <section class="bestsellers">
+        <div class="container">
+            <h2>Our Best Sellers</h2>
+            <div class="product-carousel">
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Earl+Grey" alt="Earl Grey Tea">
+                    <div class="product-info">
+                        <h3>Earl Grey Supreme</h3>
+                        <p class="description">A classic black tea with bergamot oil</p>
+                        <p class="price">$12.99</p>
+                        <button class="quick-add">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Matcha" alt="Matcha Tea">
+                    <div class="product-info">
+                        <h3>Ceremonial Matcha</h3>
+                        <p class="description">Premium Japanese green tea powder</p>
+                        <p class="price">$24.99</p>
+                        <button class="quick-add">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Chamomile" alt="Chamomile Tea">
+                    <div class="product-info">
+                        <h3>Organic Chamomile</h3>
+                        <p class="description">Soothing herbal tea for relaxation</p>
+                        <p class="price">$9.99</p>
+                        <button class="quick-add">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="https://via.placeholder.com/300x200?text=Jasmine" alt="Jasmine Tea">
+                    <div class="product-info">
+                        <h3>Jasmine Pearl</h3>
+                        <p class="description">Hand-rolled green tea with jasmine</p>
+                        <p class="price">$18.99</p>
+                        <button class="quick-add">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Customers Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial-card">
+                    <p>"The quality of Leaf & Brew's teas is unmatched. Their Earl Grey is my daily ritual!"</p>
+                    <div class="testimonial-author">- Sarah M.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"I love the educational content that comes with each order. It's made me a true tea connoisseur."</p>
+                    <div class="testimonial-author">- James T.</div>
+                </div>
+                <div class="testimonial-card">
+                    <p>"Fast shipping and excellent customer service. My go-to for premium teas."</p>
+                    <div class="testimonial-author">- Priya K.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <h2>Join Our Tea Community</h2>
+            <p>Get 10% off your first order when you subscribe</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Your email address">
+                <button type="submit">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram-feed">
+        <div class="container">
+            <h2>Follow Us @LeafAndBrew</h2>
+            <div class="instagram-posts">
+                <img src="https://via.placeholder.com/300x300?text=Tea+Photo+1" alt="Tea Photo">
+                <img src="https://via.placeholder.com/300x300?text=Tea+Photo+2" alt="Tea Photo">
+                <img src="https://via.placeholder.com/300x300?text=Tea+Photo+3" alt="Tea Photo">
+                <img src="https://via.placeholder.com/300x300?text=Tea+Photo+4" alt="Tea Photo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">All Teas</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Gift Sets</a></li>
+                        <li><a href="#">Tea Accessories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Learn</h3>
+                    <ul>
+                        <li><a href="#">Tea Guides</a></li>
+                        <li><a href="#">Brewing Instructions</a></li>
+                        <li><a href="#">Health Benefits</a></li>
+                        <li><a href="#">Tea Culture</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Wholesale</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">FAQs</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                    <div class="social-icons">
+                        <a href="#"><span>FB</span></a>
+                        <a href="#"><span>IG</span></a>
+                        <a href="#"><span>TW</span></a>
+                        <a href="#"><span>YT</span></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Leaf & Brew. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Product Listing Page (Hidden by default) -->
+    <section id="product-listing" style="display: none;">
+        <div class="container">
+            <div class="product-listing">
+                <div class="filters-sidebar">
+                    <h3>Filter By</h3>
+                    <div class="filter-group">
+                        <h4>Price</h4>
+                        <input type="range" min="0" max="100">
+                    </div>
+                    <div class="filter-group">
+                        <h4>Type</h4>
+                        <ul>
+                            <li><input type="checkbox" id="green-tea"> <label for="green-tea">Green Tea</label></li>
+                            <li><input type="checkbox" id="black-tea"> <label for="black-tea">Black Tea</label></li>
+                            <li><input type="checkbox" id="herbal-tea"> <label for="herbal-tea">Herbal Tea</label></li>
+                            <li><input type="checkbox" id="fruit-tea"> <label for="fruit-tea">Fruit Infusions</label></li>
+                        </ul>
+                    </div>
+                    <div class="filter-group">
+                        <h4>Caffeine Level</h4>
+                        <ul>
+                            <li><input type="checkbox" id="caffeinated"> <label for="caffeinated">Caffeinated</label></li>
+                            <li><input type="checkbox" id="decaf"> <label for="decaf">Decaf</label></li>
+                            <li><input type="checkbox" id="low-caf"> <label for="low-caf">Low Caffeine</label></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-grid">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x200?text=Earl+Grey" alt="Earl Grey Tea">
+                        <div class="product-info">
+                            <h3>Earl Grey Supreme</h3>
+                            <p class="description">A classic black tea with bergamot oil</p>
+                            <p class="price">$12.99</p>
+                            <button class="quick-add">Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x200?text=Matcha" alt="Matcha Tea">
+                        <div class="product-info">
+                            <h3>Ceremonial Matcha</h3>
+                            <p class="description">Premium Japanese green tea powder</p>
+                            <p class="price">$24.99</p>
+                            <button class="quick-add">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Additional product cards would go here -->
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Detail Page (Hidden by default) -->
+    <section id="product-detail" style="display: none;">
+        <div class="container">
+            <div class="product-detail">
+                <div class="product-gallery">
+                    <div class="main-image">
+                        <img src="https://via.placeholder.com/600x600?text=Earl+Grey" alt="Earl Grey Tea">
+                    </div>
+                    <div class="thumbnail-images">
+                        <img src="https://via.placeholder.com/150x150?text=Tea+1" alt="Tea">
+                        <img src="https://via.placeholder.com/150x150?text=Tea+2" alt="Tea">
+                        <img src="https://via.placeholder.com/150x150?text=Tea+3" alt="Tea">
+                        <img src="https://via.placeholder.com/150x150?text=Tea+4" alt="Tea">
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h1>Earl Grey Supreme</h1>
+                    <div class="rating">
+                        ★★★★★ <span class="review-count">(42 reviews)</span>
+                    </div>
+                    <p class="price">$12.99 <span class="original-price">$15.99</span></p>
+                    <p class="description">A premium blend of Ceylon black tea infused with natural bergamot oil for a bright, citrusy aroma and smooth finish.</p>
+                    
+                    <div class="details-section">
+                        <h3>Tasting Notes</h3>
+                        <p>Floral, citrus, mildly astringent</p>
+                    </div>
+
+                    <div class="details-section">
+                        <h3>Brewing Instructions</h3>
+                        <p>1 tsp per cup, 200°F water, steep 3-5 minutes</p>
+                    </div>
+
+                    <div class="add-to-cart">
+                        <div class="quantity-selector">
+                            <button class="decrement">-</button>
+                            <input type="number" value="1" min="1">
+                            <button class="increment">+</button>
+                        </div>
+                        <button class="add-to-cart-btn">Add to Cart</button>
+                        <button class="wishlist-btn">Save for Later</button>
+                    </div>
+                </div>
+            </div>
+
+            <section class="related-products">
+                <h2>You May Also Like</h2>
+                <div class="product-carousel">
+                    <div class="product-card">
+                        <img src="https://via.placeholder.com/300x200?text=English+Breakfast" alt="English Breakfast Tea">
+                        <div class="product-info">
+                            <h3>English Breakfast</h3>
+                            <p class="description">Robust blend perfect for mornings</p>
+                            <p class="price">$10.99</p>
+                            <button class="quick-add">Add to Cart</button>
+                        </div>
+                    </div>
+                    <!-- Additional related products would go here -->
+                </div>
+            </section>
+        </div>
+    </section>
+
+    <!-- Cart Page (Hidden by default) -->
+    <section id="cart-page" style="display: none;">
+        <div class="container">
+            <div class="cart-page">
+                <h1>Your Tea Cart</h1>
+                <div class="cart-container">
+                    <div class="cart-items">
+                        <div class="cart-item">
+                            <img src="https://via.placeholder.com/150x150?text=Earl+Grey" alt="Earl Grey Tea">
+                            <div class="item-details">
+                                <h3>Earl Grey Supreme</h3>
+                                <p class="price">$12.99</p>
+                                <div class="quantity-selector">
+                                    <button class="decrement">-</button>
+                                    <input type="number" value="1" min="1">
+                                    <button class="increment">+</button>
+                                </div>
+                                <button class="remove-item">Remove</button>
+                            </div>
+                        </div>
+                        <div class="cart-item">
+                            <img src="https://via.placeholder.com/150x150?text=Matcha" alt="Matcha Tea">
+                            <div class="item-details">
+                                <h3>Ceremonial Matcha</h3>
+                                <p class="price">$24.99</p>
+                                <div class="quantity-selector">
+                                    <button class="decrement">-</button>
+                                    <input type="number" value="1" min="1">
+                                    <button class="increment">+</button>
+                                </div>
+                                <button class="remove-item">Remove</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="cart-summary">
+                        <h2>Order Summary</h2>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span>$37.98</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span>Calculated at checkout</span>
+                        </div>
+                        <div class="promo-code">
+                            <input type="text" placeholder="Enter promo code">
+                            <button>Apply</button>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Estimated Total</span>
+                            <span>$37.98</span>
+                        </div>
+                        <button class="checkout-btn">Proceed to Checkout</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script> src="script.js" ></script>
+</body>
+</html>
